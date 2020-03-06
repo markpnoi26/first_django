@@ -10,7 +10,12 @@
         <p class="text-secondary">{{ user.email }}</p>
       </div>
     </div>
-    <!-- FORM HERE -->
+    <div class="boder-top padding-3">
+      <small class="text-muted">
+        <a href="{% url 'users-update' %}">Update Account</a>
+      </small>
+
+    </div>
   </div>
 
 {% endblock %}
