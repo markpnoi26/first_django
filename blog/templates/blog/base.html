@@ -31,10 +31,18 @@
               <a class="nav-item nav-link" href="{% url 'blog-about'%}">About</a>
             </div>
             <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="{% url 'users-register'%}">Register</a>
-            </div>
+            {% if user.is_authenticated %}
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'users-profile' %}">Profile</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+              </div>
+            {% else %}
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'users-register'%}">Register</a>
+              </div>
+            {% endif %}
+
           </div>
         </div>
       </nav>
