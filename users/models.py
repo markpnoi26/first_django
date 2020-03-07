@@ -13,8 +13,11 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.user.username} Profile"
 
-    def save(self):
-        super().save()
+    # overriding save method on needs to pass in all other arguments *args, **kwargs
+    # otherwise error will pop when creating a new profile => when user gets created.
+
+    def save(self, *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs)
 
         img = Image.open(self.image.path)
         if img.height > 300 or img.width > 300:
